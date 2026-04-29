@@ -275,204 +275,96 @@ function closeMobileMenu() {
 }
 
 // ─────────────────────────────────────────────────────────────
-// ─── 홈 페이지 (레퍼런스 이미지 디자인 완전 적용) ─────────────
-// 배경: 소프트 핑크-코랄 그라디언트
-// 중앙: 크림색 메시지 박스 + 대형 장식 타이틀
-// 장식: 탑승권(좌상단/우하단), 편지봉투(좌하단), 삼각형(우상단)
-// 빨간 실 곡선 SVG 오버레이
+// ─── 홈 페이지 — 제공된 이미지를 배경으로 그대로 사용 ──────────
 // ─────────────────────────────────────────────────────────────
 function renderHome() {
   return `
-  <section style="position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:100vh;">
-
-    <!-- ① 배경: 소프트 핑크-코랄 그라디언트 -->
-    <div style="position:absolute;inset:0;background:linear-gradient(160deg,#F9CECE 0%,#F5B7B3 30%,#EDA0A0 60%,#E08888 100%);"></div>
-
-    <!-- ② 빨간 실 곡선 SVG (레퍼런스 핵심 장식) -->
-    <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
-      <!-- 왼쪽 세로 실 -->
-      <path d="M 80 -20 C 60 120, 110 280, 70 420 C 40 540, 90 660, 60 800"
-        fill="none" stroke="#B01E3A" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
-      <!-- 오른쪽 세로 실 -->
-      <path d="M 1120 -10 C 1140 130, 1090 290, 1130 440 C 1160 570, 1110 680, 1140 810"
-        fill="none" stroke="#B01E3A" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
-      <!-- 중간 대각 실 -->
-      <path d="M 200 50 C 350 200, 280 380, 400 500 C 490 590, 420 700, 550 780"
-        fill="none" stroke="#B01E3A" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
-      <!-- 핀 포인트 -->
-      <circle cx="80" cy="0" r="5" fill="#B01E3A" opacity="0.6"/>
-      <circle cx="1120" cy="0" r="5" fill="#B01E3A" opacity="0.6"/>
-    </svg>
-
-    <!-- ③ 탑승권 왼쪽 상단 (lg 이상만 표시) -->
-    <img src="${BOARDING_PASS_LEFT}" alt="" aria-hidden="true" class="lg-show"
+  <section style="
+    position:relative;
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end;
+    overflow:hidden;
+    background:#F5B7B3;
+  ">
+    <!-- 히어로 이미지 (전체 화면 꽉 채우기) -->
+    <img
+      src="/static/hero-bg.jpg"
+      alt="쎄선쎄후 히어로 배경"
       style="
         position:absolute;
-        width:clamp(200px,16vw,270px);
-        top:8%; left:3%;
-        transform:rotate(-8deg);
-        filter:drop-shadow(4px 8px 18px rgba(47,43,40,0.22));
-        z-index:4; pointer-events:none;
-        display:none;
-      "/>
+        inset:0;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center center;
+        z-index:1;
+        pointer-events:none;
+        user-select:none;
+      "
+    />
 
-    <!-- ④ 탑승권 오른쪽 하단 (lg 이상만 표시) -->
-    <img src="${BOARDING_PASS_RIGHT}" alt="" aria-hidden="true" class="lg-show"
-      style="
-        position:absolute;
-        width:clamp(180px,14vw,250px);
-        bottom:7%; right:3%;
-        transform:rotate(6deg);
-        filter:drop-shadow(4px 8px 18px rgba(47,43,40,0.22));
-        z-index:4; pointer-events:none;
-        display:none;
-      "/>
-
-    <!-- ⑤ 편지봉투 왼쪽 하단 (md 이상만 표시) -->
-    <img src="${ENVELOPE_LEFT}" alt="" aria-hidden="true" class="md-show"
-      style="
-        position:absolute;
-        width:clamp(110px,9vw,160px);
-        bottom:5%; left:2%;
-        transform:rotate(5deg);
-        filter:drop-shadow(3px 6px 14px rgba(47,43,40,0.25));
-        z-index:4; pointer-events:none;
-        display:none;
-      "/>
-
-    <!-- ⑥ 편지봉투 오른쪽 상단 (lg 이상만 표시) -->
-    <img src="${ENVELOPE_RIGHT}" alt="" aria-hidden="true" class="lg-show"
-      style="
-        position:absolute;
-        width:clamp(95px,7.5vw,135px);
-        top:6%; right:2%;
-        transform:rotate(-6deg);
-        filter:drop-shadow(3px 6px 12px rgba(47,43,40,0.2));
-        z-index:4; pointer-events:none;
-        opacity:0.9;
-        display:none;
-      "/>
-
-    <!-- ⑦ 주황-빨강 삼각형 종이 장식 (우상단, 레퍼런스 특징) -->
-    <div class="lg-show" style="
-      position:absolute; top:0; right:0;
-      width:0; height:0;
-      border-left:clamp(80px,8vw,120px) solid transparent;
-      border-top:clamp(80px,8vw,120px) solid #F35A24;
-      z-index:5; opacity:0.9; pointer-events:none;
-      display:none;
-      filter:drop-shadow(-2px 2px 6px rgba(180,60,20,0.3));
+    <!-- 하단 그라디언트 오버레이 (버튼 가독성용) -->
+    <div style="
+      position:absolute;
+      bottom:0; left:0; right:0;
+      height:38%;
+      background:linear-gradient(to top, rgba(30,10,10,0.45) 0%, transparent 100%);
+      z-index:2;
+      pointer-events:none;
     "></div>
 
-    <!-- ⑧ 중앙 콘텐츠 -->
-    <div style="position:relative;z-index:10;text-align:center;padding:1.5rem 1.25rem;max-width:38rem;margin:0 auto;display:flex;flex-direction:column;align-items:center;">
-
-      <!-- 상단 레이블 -->
-      <p class="fade-in-up-d1" style="
-        font-size:0.72rem;
-        letter-spacing:0.28em;
-        color:rgba(255,255,255,0.88);
-        margin-bottom:1rem;
-        font-weight:600;
-        text-transform:uppercase;
-        text-shadow:0 1px 4px rgba(0,0,0,0.15);
-      ">세움 오리지널</p>
-
-      <!-- 크림 메시지 박스 (레퍼런스 핵심) -->
-      <div class="fade-in-up-d2 message-box" style="
-        padding:2rem 2.5rem 1.75rem;
-        margin-bottom:1.5rem;
-        width:100%;
-        position:relative;
-      ">
-        <!-- 코너 장식 -->
-        <div style="position:absolute;top:0.6rem;left:0.6rem;width:0.9rem;height:0.9rem;border-top:2px solid rgba(181,140,100,0.5);border-left:2px solid rgba(181,140,100,0.5);"></div>
-        <div style="position:absolute;top:0.6rem;right:0.6rem;width:0.9rem;height:0.9rem;border-top:2px solid rgba(181,140,100,0.5);border-right:2px solid rgba(181,140,100,0.5);"></div>
-        <div style="position:absolute;bottom:0.6rem;left:0.6rem;width:0.9rem;height:0.9rem;border-bottom:2px solid rgba(181,140,100,0.5);border-left:2px solid rgba(181,140,100,0.5);"></div>
-        <div style="position:absolute;bottom:0.6rem;right:0.6rem;width:0.9rem;height:0.9rem;border-bottom:2px solid rgba(181,140,100,0.5);border-right:2px solid rgba(181,140,100,0.5);"></div>
-
-        <!-- 비행기 아이콘 -->
-        <div style="margin-bottom:0.5rem;">
-          <span style="font-size:1.2rem;">✈</span>
-        </div>
-
-        <!-- 메인 타이틀 (레퍼런스: 크고 장식적인 한글) -->
-        <h1 class="title-serif" style="
-          font-size:clamp(3.2rem,11vw,6.5rem);
-          line-height:1;
-          margin-bottom:0.6rem;
+    <!-- CTA 버튼 (이미지 위 하단 중앙) -->
+    <div class="fade-in-up-d2" style="
+      position:relative;
+      z-index:10;
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.75rem;
+      justify-content:center;
+      padding-bottom:clamp(2.5rem,6vw,5rem);
+      padding-top:1rem;
+    ">
+      <a href="/memories" onclick="navigate('/memories');return false;"
+        style="
+          display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;
+          padding:0.85rem 2.2rem;
+          border-radius:6px;
+          font-size:0.92rem;font-weight:700;
+          text-decoration:none;
+          background:#D51E2A;
+          color:white;
+          box-shadow:0 4px 18px rgba(213,30,42,0.45);
+          letter-spacing:0.07em;
+          transition:all 0.2s;
+          font-family:'Noto Sans KR',sans-serif;
+        "
+        onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 7px 24px rgba(213,30,42,0.55)';"
+        onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 18px rgba(213,30,42,0.45)';">
+        우리의 추억 →
+      </a>
+      <a href="/about" onclick="navigate('/about');return false;"
+        style="
+          display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;
+          padding:0.85rem 2.2rem;
+          border-radius:6px;
+          font-size:0.92rem;font-weight:600;
+          text-decoration:none;
+          background:rgba(255,255,255,0.88);
           color:#5C3A1E;
-        ">쎄선쎄후</h1>
-
-        <!-- 서브타이틀 -->
-        <p style="
-          font-size:clamp(0.8rem,2.2vw,1rem);
-          color:#9B7355;
-          letter-spacing:0.18em;
-          font-weight:500;
-          font-family:'Noto Serif KR',serif;
-        ">Another beginning</p>
-
-        <!-- 구분선 -->
-        <div style="width:50px;height:1px;background:rgba(181,140,100,0.4);margin:0.9rem auto;"></div>
-
-        <!-- CECOM 메시지 -->
-        <p style="
-          font-size:clamp(0.72rem,1.8vw,0.85rem);
-          color:#7A5C3E;
-          letter-spacing:0.04em;
-          line-height:1.5;
-        ">CECOM으로부터 새로운 메시지가 도착했습니다.</p>
-      </div>
-
-      <!-- CTA 버튼들 -->
-      <div class="fade-in-up-d3" style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;">
-        <a href="/memories" onclick="navigate('/memories');return false;"
-          style="
-            display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;
-            padding:0.8rem 1.9rem;
-            border-radius:6px;
-            font-size:0.88rem;font-weight:700;
-            text-decoration:none;
-            background:#D51E2A;
-            color:white;
-            box-shadow:0 4px 16px rgba(213,30,42,0.35);
-            letter-spacing:0.06em;
-            transition:all 0.2s;
-            font-family:'Noto Sans KR',sans-serif;
-          "
-          onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(213,30,42,0.45)';"
-          onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 16px rgba(213,30,42,0.35)';">
-          우리의 추억 →
-        </a>
-        <a href="/about" onclick="navigate('/about');return false;"
-          style="
-            display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;
-            padding:0.8rem 1.9rem;
-            border-radius:6px;
-            font-size:0.88rem;font-weight:600;
-            text-decoration:none;
-            background:transparent;
-            color:#5C3A1E;
-            border:1.5px solid rgba(92,58,30,0.45);
-            letter-spacing:0.06em;
-            transition:all 0.2s;
-            font-family:'Noto Sans KR',sans-serif;
-          "
-          onmouseover="this.style.background='rgba(92,58,30,0.08)';this.style.transform='translateY(-2px)';"
-          onmouseout="this.style.background='transparent';this.style.transform='translateY(0)';">
-          쎄선쎄후란?
-        </a>
-      </div>
-
-      <!-- 하단 소개 문구 -->
-      <p class="fade-in-up-d4" style="
-        margin-top:1.5rem;
-        font-size:0.8rem;
-        color:rgba(255,255,255,0.8);
-        letter-spacing:0.05em;
-        text-shadow:0 1px 4px rgba(0,0,0,0.15);
-      ">선배와 후배가 함께하는 특별한 시간 🌸</p>
+          border:1.5px solid rgba(255,255,255,0.7);
+          letter-spacing:0.07em;
+          transition:all 0.2s;
+          font-family:'Noto Sans KR',sans-serif;
+          backdrop-filter:blur(4px);
+        "
+        onmouseover="this.style.background='white';this.style.transform='translateY(-2px)';"
+        onmouseout="this.style.background='rgba(255,255,255,0.88)';this.style.transform='translateY(0)';">
+        쎄선쎄후란?
+      </a>
     </div>
   </section>`;
 }
