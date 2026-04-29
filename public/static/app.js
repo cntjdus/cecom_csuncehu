@@ -577,7 +577,7 @@ function renderMemories() {
       </div>
 
       ${teams.map(id => `
-        <div class="ticket-card" id="ticket-card-${id}" onclick="tearTicket(${id})">
+        <div class="ticket-card" id="ticket-card-${id}" data-team-id="${id}">
           <!-- 좌측: 메인 티켓 + 조 이름 -->
           <div class="ticket-main-wrap" id="ticket-main-${id}">
             <img src="/static/ticket-main.webp" alt="${TEAM_NAMES[id]} 탑승권" draggable="false"/>
@@ -1197,6 +1197,13 @@ async function render() {
     content.innerHTML = renderAbout();
   } else if (route.page === 'memories') {
     content.innerHTML = renderMemories();
+    // onclick 대신 직접 이벤트 리스너 부착 (module scope 문제 방지)
+    document.querySelectorAll('.ticket-card[data-team-id]').forEach(card => {
+      card.addEventListener('click', () => {
+        const teamId = parseInt(card.dataset.teamId);
+        tearTicket(teamId);
+      });
+    });
   } else if (route.page === 'team-bingo') {
     currentTeamId = route.teamId;
     prevBingoCount = 0;
@@ -1230,6 +1237,7 @@ window.navigate = navigate;
 window.toggleMobileMenu = toggleMobileMenu;
 window.closeMobileMenu = closeMobileMenu;
 window.selectTeam = selectTeam;
+window.tearTicket = tearTicket;
 window.openPhotoModal = openPhotoModal;
 window.openEditModal = openEditModal;
 window.closeModal = closeModal;
