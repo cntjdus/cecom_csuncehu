@@ -349,76 +349,59 @@ function renderHome() {
 // ─────────────────────────────────────────────────────────────
 function renderAbout() {
   return `
-  <div style="min-height:100vh;padding-top:64px;background:#F5EEE8;">
-    <!-- 헤더 -->
-    <section style="position:relative;padding:4.5rem 1rem 3.5rem;text-align:center;overflow:hidden;background-image:url('/static/other-bg-crop.jpg');background-size:cover;background-position:center top;">
-      <!-- 빨간 실 -->
-      <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice">
-        <path d="M 40 -10 C 20 60, 70 140, 40 220 C 20 280, 55 300 40 310"
-          fill="none" stroke="#B01E3A" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/>
-        <path d="M 760 -10 C 780 60, 730 130, 760 210 C 785 275, 750 300 760 310"
-          fill="none" stroke="#B01E3A" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/>
-      </svg>
-      <div style="position:relative;z-index:10;max-width:38rem;margin:0 auto;">
-        <p style="font-size:0.7rem;letter-spacing:0.28em;color:rgba(255,255,255,0.85);margin-bottom:0.75rem;font-weight:600;text-transform:uppercase;">세움 오리지널</p>
-        <img src="/static/title-logo.png" alt="쎄선쎄후" style="height:clamp(3rem,10vw,5.5rem);width:auto;object-fit:contain;margin-bottom:0.5rem;" />
-        <p style="font-size:1.1rem;font-weight:600;color:rgba(92,58,30,0.85);margin-bottom:0.25rem;">쎄선쎄후란?</p>
-        <p style="font-size:0.9rem;color:rgba(92,58,30,0.7);letter-spacing:0.1em;font-family:'Noto Serif KR',serif;">Another beginning ✈</p>
-      </div>
-    </section>
+  <div style="
+    min-height:100vh;
+    padding-top:64px;
+    position:relative;
+    /* 원본 세로형 이미지(563x1024)를 비율 그대로, 가로 100% 꽉 채워 반복없이 */
+    background-image: url('/static/about-bg.jpg');
+    background-size: 100% auto;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-color: #f5b7b3;
+  ">
 
-    <!-- 메인 콘텐츠 -->
-    <section style="padding:3rem 1rem 4rem;">
-      <div style="max-width:46rem;margin:0 auto;">
-
-        <!-- 소개 카드 -->
-        <div class="message-box" style="text-align:center;margin-bottom:2.5rem;padding:2rem 1.5rem;position:relative;">
-          <div style="position:absolute;top:0.5rem;left:0.5rem;width:0.8rem;height:0.8rem;border-top:2px solid rgba(181,140,100,0.45);border-left:2px solid rgba(181,140,100,0.45);"></div>
-          <div style="position:absolute;top:0.5rem;right:0.5rem;width:0.8rem;height:0.8rem;border-top:2px solid rgba(181,140,100,0.45);border-right:2px solid rgba(181,140,100,0.45);"></div>
-          <div style="position:absolute;bottom:0.5rem;left:0.5rem;width:0.8rem;height:0.8rem;border-bottom:2px solid rgba(181,140,100,0.45);border-left:2px solid rgba(181,140,100,0.45);"></div>
-          <div style="position:absolute;bottom:0.5rem;right:0.5rem;width:0.8rem;height:0.8rem;border-bottom:2px solid rgba(181,140,100,0.45);border-right:2px solid rgba(181,140,100,0.45);"></div>
-          <p style="font-size:0.68rem;letter-spacing:0.22em;color:#9B7355;margin-bottom:0.75rem;font-weight:600;text-transform:uppercase;">ABOUT US</p>
-          <img src="/static/title-logo.png" alt="쎄선쎄후" style="height:3rem;width:auto;object-fit:contain;margin-bottom:0.75rem;" />
-          <p style="font-size:0.95rem;font-weight:600;margin-bottom:0.25rem;color:#2F2B28;">
-            <span style="color:#D51E2A;">쎄콤</span> 선배, <span style="color:#D51E2A;">쎄콤</span> 후배
-          </p>
-          <p style="font-size:0.85rem;color:#7A5C3E;">세상에서 가장 특별한 선배와 후배의 만남</p>
-        </div>
-
-        <!-- 소개 카드들 -->
-        <div style="display:flex;flex-direction:column;gap:1rem;">
-          ${[
-            { icon:"🌱", title:"활동 소개", content:"쎄선쎄후는 선배와 후배가 함께 성장하고 소통하는 기회를 만들고자 하는 활동입니다. 기존의 짝선짝후라는 이름에서 착안하여 쎄콤 선배, 쎄콤 후배라는 활동명을 만들게 되었습니다. 선배는 후배에게 경험과 지혜를, 후배는 선배에게 새로운 시각과 에너지를 나눕니다." },
-            { icon:"🎯", title:"활동 방식", content:"미션 빙고를 중심으로 다양한 활동을 진행합니다. 함께 미션을 완수하며 자연스럽게 대화하고 추억을 쌓습니다. 각 조별로 빙고판을 채워나가며 팀워크와 유대감을 강화합니다." },
-            { icon:"📸", title:"추억 기록", content:"함께한 모든 순간을 사진으로 기록합니다. 미션을 완수할 때마다 찍는 사진들은 우리만의 소중한 추억이 됩니다. 빙고판에 담긴 사진들이 모여 쎄선쎄후만의 특별한 이야기를 만들어갑니다." }
-          ].map(item => `
-            <div style="
-              display:flex;gap:1.25rem;
-              padding:1.5rem;border-radius:0.75rem;
-              background:#FDFAF6;
-              border:1px solid rgba(181,140,100,0.25);
-              box-shadow:0 2px 12px rgba(139,94,42,0.07);
-              transition:box-shadow 0.2s,transform 0.2s;
-            "
-              onmouseover="this.style.boxShadow='0 6px 20px rgba(139,94,42,0.12)';this.style.transform='translateY(-2px)';"
-              onmouseout="this.style.boxShadow='0 2px 12px rgba(139,94,42,0.07)';this.style.transform='translateY(0)';">
-              <div style="font-size:2rem;flex-shrink:0;margin-top:0.125rem;">${item.icon}</div>
-              <div>
-                <h3 style="font-size:1rem;font-weight:700;color:#D51E2A;margin-bottom:0.5rem;">${item.title}</h3>
-                <p style="font-size:0.875rem;line-height:1.75;color:#5C4438;">${item.content}</p>
-              </div>
+    <!-- 설명 카드 오버레이 (이미지 위에 자연스럽게) -->
+    <div style="
+      position:relative;
+      z-index:10;
+      max-width:46rem;
+      margin:0 auto;
+      padding: 52vw 1rem 4rem;
+    ">
+      <!-- 소개 카드들 -->
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        ${[
+          { icon:"🌱", title:"활동 소개", content:"쎄선쎄후는 선배와 후배가 함께 성장하고 소통하는 기회를 만들고자 하는 활동입니다. 기존의 짝선짝후라는 이름에서 착안하여 쎄콤 선배, 쎄콤 후배라는 활동명을 만들게 되었습니다. 선배는 후배에게 경험과 지혜를, 후배는 선배에게 새로운 시각과 에너지를 나눕니다." },
+          { icon:"🎯", title:"활동 방식", content:"미션 빙고를 중심으로 다양한 활동을 진행합니다. 함께 미션을 완수하며 자연스럽게 대화하고 추억을 쌓습니다. 각 조별로 빙고판을 채워나가며 팀워크와 유대감을 강화합니다." },
+          { icon:"📸", title:"추억 기록", content:"함께한 모든 순간을 사진으로 기록합니다. 미션을 완수할 때마다 찍는 사진들은 우리만의 소중한 추억이 됩니다. 빙고판에 담긴 사진들이 모여 쎄선쎄후만의 특별한 이야기를 만들어갑니다." }
+        ].map(item => `
+          <div style="
+            display:flex;gap:1.25rem;
+            padding:1.5rem;border-radius:0.75rem;
+            background:rgba(253,250,246,0.95);
+            border:1px solid rgba(181,140,100,0.25);
+            box-shadow:0 2px 12px rgba(139,94,42,0.10);
+            transition:box-shadow 0.2s,transform 0.2s;
+          "
+            onmouseover="this.style.boxShadow='0 6px 20px rgba(139,94,42,0.15)';this.style.transform='translateY(-2px)';"
+            onmouseout="this.style.boxShadow='0 2px 12px rgba(139,94,42,0.10)';this.style.transform='translateY(0)';">
+            <div style="font-size:2rem;flex-shrink:0;margin-top:0.125rem;">${item.icon}</div>
+            <div>
+              <h3 style="font-size:1rem;font-weight:700;color:#D51E2A;margin-bottom:0.5rem;">${item.title}</h3>
+              <p style="font-size:0.875rem;line-height:1.75;color:#5C4438;">${item.content}</p>
             </div>
-          `).join('')}
-        </div>
-
-        <!-- 마무리 문구 -->
-        <div style="margin-top:2.5rem;padding:2rem;text-align:center;border-radius:0.75rem;background:linear-gradient(135deg,rgba(249,206,206,0.35),rgba(237,160,160,0.20));border:1px solid rgba(213,30,42,0.15);">
-          <p style="font-size:1.1rem;font-weight:600;color:#D51E2A;line-height:1.9;font-family:'Noto Serif KR',serif;">
-            "선배와 후배가 함께라면,<br>어떤 미션도 즐거운 추억이 됩니다 🌸"
-          </p>
-        </div>
+          </div>
+        `).join('')}
       </div>
-    </section>
+
+      <!-- 마무리 문구 -->
+      <div style="margin-top:2rem;padding:2rem;text-align:center;border-radius:0.75rem;background:rgba(249,206,206,0.55);border:1px solid rgba(213,30,42,0.15);">
+        <p style="font-size:1.1rem;font-weight:600;color:#D51E2A;line-height:1.9;font-family:'HSHwalkongSerif','Noto Serif KR',serif;">
+          "선배와 후배가 함께라면,<br>어떤 미션도 즐거운 추억이 됩니다 🌸"
+        </p>
+      </div>
+    </div>
   </div>`;
 }
 
