@@ -413,7 +413,7 @@ function renderAbout() {
 function renderMemories() {
   const teams = [1,2,3,4,5];
   return `
-  <div style="min-height:100vh;padding-top:64px;position:relative;overflow:hidden;background-image:url('/static/other-bg-crop.jpg');background-size:cover;background-position:center top;">
+  <div style="min-height:100vh;padding-top:64px;position:relative;overflow:hidden;background-image:url('/static/about-bg.jpg');background-size:100% auto;background-position:center top;background-repeat:no-repeat;background-color:#f5b7b3;">
 
     <!-- 빨간 실 -->
     <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;" viewBox="0 0 1000 900" preserveAspectRatio="xMidYMid slice">
