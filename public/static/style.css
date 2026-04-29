@@ -1,1 +1,201 @@
-h1 { font-family: Arial, Helvetica, sans-serif; }
+/* ─── Google Fonts (Noto Sans KR) ─────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+/* ─── 기본 리셋 ────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: oklch(0.98 0.01 10);
+  color: oklch(0.22 0.04 15);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── 네비게이션 ────────────────────────────────────────────── */
+.nav-link {
+  position: relative;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  color: oklch(0.28 0.04 15);
+  transition: color 0.25s ease;
+  padding-bottom: 4px;
+  text-decoration: none;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 2px;
+  background: #c0392b;
+  transition: width 0.3s ease;
+}
+.nav-link:hover { color: #c0392b; }
+.nav-link:hover::after { width: 100%; }
+.nav-link.active { color: #c0392b; font-weight: 700; }
+.nav-link.active::after { width: 100%; }
+
+/* ─── 빙고 셀 ──────────────────────────────────────────────── */
+.bingo-cell {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+  user-select: none;
+}
+.bingo-cell:hover { transform: scale(1.03); box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
+.bingo-cell:active { transform: scale(0.97); }
+
+/* ─── 빙고 라인 애니메이션 ──────────────────────────────────── */
+@keyframes drawLine {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+.bingo-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 0.6s ease-out forwards;
+}
+
+/* ─── 사진 첨부 애니메이션 ──────────────────────────────────── */
+@keyframes photoAttach {
+  0% { transform: scale(0.8) rotate(-5deg); opacity: 0; }
+  60% { transform: scale(1.05) rotate(1deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.photo-attach { animation: photoAttach 0.35s ease-out forwards; }
+
+/* ─── 페이드인 애니메이션 ──────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up    { animation: fadeInUp 0.7s ease-out forwards; }
+.fade-in-up-d1 { animation: fadeInUp 0.7s ease-out 0.1s  forwards; opacity: 0; }
+.fade-in-up-d2 { animation: fadeInUp 0.7s ease-out 0.25s forwards; opacity: 0; }
+.fade-in-up-d3 { animation: fadeInUp 0.7s ease-out 0.4s  forwards; opacity: 0; }
+
+/* ─── 탑승권 찢기 애니메이션 ────────────────────────────────── */
+@keyframes tearPeel {
+  0%   { transform: translateX(0);    opacity: 1; }
+  20%  { transform: translateX(12px); opacity: 1; }
+  60%  { transform: translateX(80%);  opacity: 1; }
+  85%  { transform: translateX(150%); opacity: 0.6; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+@keyframes ticketPull {
+  0%   { transform: translateX(0); }
+  35%  { transform: translateX(-4px); }
+  70%  { transform: translateX(-1.5px); }
+  100% { transform: translateX(0); }
+}
+@keyframes tearLineFlash {
+  0%   { opacity: 0; }
+  15%  { opacity: 1; background: rgba(91,191,181,0.95); width: 3px; }
+  50%  { opacity: 0.7; width: 2px; }
+  100% { opacity: 0; width: 1px; }
+}
+.ticket-stub-tear {
+  animation: tearPeel 0.55s cubic-bezier(0.4, 0, 1, 1) forwards;
+  transform-origin: left center;
+  position: relative;
+  z-index: 10;
+  overflow: visible;
+}
+.ticket-shake { animation: ticketPull 0.22s ease-out; }
+.tear-flash { animation: tearLineFlash 0.55s ease-out forwards; }
+
+/* ─── 빙고 완성 배너 ────────────────────────────────────────── */
+@keyframes bingoIn {
+  0%  { transform: translateX(-50%) scale(0.4) translateY(-30px); opacity: 0; }
+  70% { transform: translateX(-50%) scale(1.05) translateY(0); opacity: 1; }
+  100%{ transform: translateX(-50%) scale(1) translateY(0); opacity: 1; }
+}
+@keyframes bingoOut {
+  from { transform: translateX(-50%) scale(1); opacity: 1; }
+  to   { transform: translateX(-50%) scale(0.7) translateY(-20px); opacity: 0; }
+}
+.bingo-banner-in  { animation: bingoIn  0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.bingo-banner-out { animation: bingoOut 0.3s ease-in forwards; }
+
+/* ─── 구분선 ────────────────────────────────────────────────── */
+.elegant-divider {
+  width: 60px; height: 1.5px;
+  background: linear-gradient(to right, transparent, #c0392b, transparent);
+  margin: 0 auto;
+}
+
+/* ─── 골드 그라디언트 텍스트 ────────────────────────────────── */
+.text-gold {
+  background: linear-gradient(135deg, #c8960c, #f0c832, #d4a018);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 6px rgba(180,120,0,0.3));
+}
+
+/* ─── 모달 오버레이 ─────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem;
+  animation: fadeInUp 0.2s ease-out;
+}
+.modal-box {
+  background: white;
+  border-radius: 1.25rem;
+  max-width: 22rem; width: 100%;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+/* ─── 토스트 알림 ───────────────────────────────────────────── */
+.toast-container {
+  position: fixed; top: 1.25rem; left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex; flex-direction: column; gap: 0.5rem;
+  align-items: center;
+  pointer-events: none;
+}
+.toast {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: oklch(0.22 0.04 15);
+  animation: fadeInUp 0.3s ease-out;
+  white-space: nowrap;
+  pointer-events: auto;
+}
+.toast.success { border-left: 4px solid #c0392b; }
+.toast.info    { border-left: 4px solid #5bbfb5; }
+.toast.error   { border-left: 4px solid #e74c3c; }
+
+/* ─── 드래그 오버 ───────────────────────────────────────────── */
+.drag-over {
+  border-color: #c0392b !important;
+  background: rgba(192,57,43,0.06) !important;
+  transform: scale(1.02);
+}
+
+/* ─── 진행 바 ───────────────────────────────────────────────── */
+@keyframes progressBar {
+  from { width: 0; }
+}
+.progress-bar { animation: progressBar 0.7s ease-out; }
+
+/* ─── 모바일 드로어 ─────────────────────────────────────────── */
+.mobile-drawer {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: 18rem;
+  background: white;
+  box-shadow: -4px 0 24px rgba(180,60,60,0.15);
+  z-index: 50;
+  transition: transform 0.3s ease-out;
+  transform: translateX(100%);
+}
+.mobile-drawer.open { transform: translateX(0); }
