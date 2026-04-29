@@ -487,6 +487,9 @@ function renderMemories() {
     .ticket-stub-wrap {
       flex: ${stubRatio};
       min-width: 0;
+      position: relative;
+      transform-origin: left center;
+      transition: none;
     }
     .ticket-stub-wrap img {
       display: block;
@@ -494,6 +497,52 @@ function renderMemories() {
       height: 100%;
       object-fit: cover;
       object-position: center;
+    }
+
+    /* ── 찢기 애니메이션 ── */
+    @keyframes tearOff {
+      0%   { transform: rotate(0deg) translateX(0) translateY(0); opacity: 1; }
+      15%  { transform: rotate(-3deg) translateX(-4px) translateY(-2px); }
+      30%  { transform: rotate(6deg) translateX(6px) translateY(-6px); }
+      50%  { transform: rotate(-8deg) translateX(14px) translateY(-16px); opacity: 1; }
+      75%  { transform: rotate(18deg) translateX(40px) translateY(-30px); opacity: 0.6; }
+      100% { transform: rotate(28deg) translateX(90px) translateY(-10px); opacity: 0; }
+    }
+    @keyframes tearLine {
+      0%   { opacity: 0; transform: scaleY(0); }
+      20%  { opacity: 1; transform: scaleY(1); }
+      80%  { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    @keyframes mainPull {
+      0%   { transform: translateX(0); }
+      30%  { transform: translateX(-3px); }
+      60%  { transform: translateX(2px); }
+      100% { transform: translateX(0); }
+    }
+    .stub-tearing {
+      animation: tearOff 0.65s cubic-bezier(0.4, 0, 0.8, 1) forwards;
+      z-index: 20;
+    }
+    .main-pulling {
+      animation: mainPull 0.65s ease forwards;
+    }
+    .tear-line {
+      position: absolute;
+      top: 0; bottom: 0;
+      right: 0;
+      width: 3px;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px, transparent 4px,
+        rgba(120,60,40,0.5) 4px, rgba(120,60,40,0.5) 8px
+      );
+      transform-origin: top center;
+      z-index: 15;
+      pointer-events: none;
+    }
+    .tear-line.tearing {
+      animation: tearLine 0.65s ease forwards;
     }
   </style>
 
@@ -528,16 +577,18 @@ function renderMemories() {
       </div>
 
       ${teams.map(id => `
-        <div class="ticket-card" onclick="navigate('/team/${id}')">
+        <div class="ticket-card" id="ticket-card-${id}" onclick="tearTicket(${id})">
           <!-- 좌측: 메인 티켓 + 조 이름 -->
-          <div class="ticket-main-wrap">
+          <div class="ticket-main-wrap" id="ticket-main-${id}">
             <img src="/static/ticket-main.webp" alt="${TEAM_NAMES[id]} 탑승권" draggable="false"/>
             <div class="ticket-team-label">
               <span>${TEAM_NAMES[id]}</span>
             </div>
+            <!-- 찢김 경계선 -->
+            <div class="tear-line" id="tear-line-${id}"></div>
           </div>
           <!-- 우측: 스텁 -->
-          <div class="ticket-stub-wrap">
+          <div class="ticket-stub-wrap" id="ticket-stub-${id}">
             <img src="/static/ticket-stub.webp" alt="탑승권 스텁" draggable="false"/>
           </div>
         </div>
@@ -557,6 +608,34 @@ function selectTeam(teamId) {
     stub.classList.add('ticket-stub-tear');
     setTimeout(() => navigate(`/team/${teamId}`), 600);
   }, 220);
+}
+
+function tearTicket(teamId) {
+  const card     = document.getElementById(`ticket-card-${teamId}`);
+  const stub     = document.getElementById(`ticket-stub-${teamId}`);
+  const mainWrap = document.getElementById(`ticket-main-${teamId}`);
+  const tearLine = document.getElementById(`tear-line-${teamId}`);
+  if (!card || !stub) return;
+
+  // 이미 애니메이션 중이면 무시
+  if (card.dataset.tearing === '1') return;
+  card.dataset.tearing = '1';
+
+  // 카드 전체 overflow 허용 (stub이 날아가야 하므로)
+  card.style.overflow = 'visible';
+  card.style.cursor   = 'default';
+
+  // 경계선 등장
+  if (tearLine) tearLine.classList.add('tearing');
+
+  // stub에 찢기 클래스 적용
+  stub.classList.add('stub-tearing');
+
+  // 메인 파트 미세 떨림
+  if (mainWrap) mainWrap.classList.add('main-pulling');
+
+  // 애니메이션 완료 후 페이지 이동
+  setTimeout(() => navigate(`/team/${teamId}`), 680);
 }
 
 // ─────────────────────────────────────────────────────────────
