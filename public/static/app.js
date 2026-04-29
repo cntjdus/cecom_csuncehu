@@ -415,71 +415,54 @@ function renderMemories() {
   return `
   <div style="min-height:100vh;padding-top:64px;position:relative;overflow:hidden;background-image:url('/static/about-bg.jpg');background-size:100% auto;background-position:center top;background-repeat:no-repeat;background-color:#f5b7b3;">
 
-    <!-- 빨간 실 -->
-    <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;" viewBox="0 0 1000 900" preserveAspectRatio="xMidYMid slice">
-      <path d="M 60 0 C 40 120, 90 280, 55 450 C 30 590, 75 720, 50 900"
-        fill="none" stroke="#B01E3A" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
-      <path d="M 940 0 C 960 130, 910 290, 945 470 C 970 610, 925 730, 950 900"
-        fill="none" stroke="#B01E3A" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
-    </svg>
+    <div style="position:relative;z-index:10;min-height:calc(100vh - 64px);padding:3rem 1rem 4rem;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:1.2rem;">
 
-    <!-- 삼각형 장식 우상단 -->
-    <div style="
-      position:absolute; top:0; right:0;
-      width:0; height:0;
-      border-left:90px solid transparent;
-      border-top:90px solid #F35A24;
-      z-index:2; opacity:0.85; pointer-events:none;
-    "></div>
+      ${teams.map(id => `
+        <!-- ${id}조 카드 -->
+        <div onclick="navigate('/team/${id}')"
+          style="
+            cursor:pointer;
+            display:flex;
+            align-items:stretch;
+            width:100%;
+            max-width:480px;
+            border-radius:12px;
+            overflow:hidden;
+            box-shadow:0 4px 18px rgba(47,43,40,0.18);
+            transition:transform 0.18s,box-shadow 0.18s;
+          "
+          onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 28px rgba(47,43,40,0.26)';"
+          onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 18px rgba(47,43,40,0.18)';">
 
-    <div style="position:relative;z-index:10;min-height:calc(100vh - 64px);padding:3rem 1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-      <div style="width:100%;max-width:40rem;display:flex;flex-direction:column;gap:1.5rem;">
-
-        <!-- 헤더 -->
-        <div style="text-align:center;" class="fade-in-up-d1">
-          <p style="font-size:0.7rem;letter-spacing:0.28em;color:rgba(255,255,255,0.85);margin-bottom:0.6rem;font-weight:600;text-transform:uppercase;">세움 오리지널</p>
-          <img src="/static/title-logo.png" alt="쎄선쎄후" style="height:clamp(2.5rem,8vw,4.5rem);width:auto;object-fit:contain;margin-bottom:0.5rem;filter:drop-shadow(0 2px 12px rgba(255,255,255,0.4));" />
-          <p style="font-size:1rem;color:rgba(92,58,30,0.85);font-weight:500;">탑승권을 선택해주세요! 🎫</p>
-        </div>
-
-        <!-- 탑승권 목록 -->
-        <div style="display:flex;flex-direction:column;gap:0.9rem;" id="ticket-list" class="fade-in-up-d2">
-          ${teams.map(id => `
-            <div class="ticket-card" id="ticket-${id}" onclick="selectTeam(${id})"
-              style="
-                position:relative;cursor:pointer;user-select:none;
-                filter:drop-shadow(0 4px 14px rgba(47,43,40,0.16));
-                display:inline-flex;align-items:stretch;
-                height:clamp(82px,14vw,148px);
-                width:100%;border-radius:10px;overflow:hidden;
-                transition:transform 0.2s,filter 0.2s;
-              ">
-              <!-- 메인 티켓 -->
-              <div style="flex:3 0 0;min-width:0;height:100%;position:relative;">
-                <img src="/static/ticket-main.png" alt="탑승권 메인"
-                  style="display:block;width:100%;height:100%;object-fit:contain;object-position:left center;border-radius:10px 0 0 10px;background:#f5f0eb;" draggable="false"/>
-                <!-- 조 이름 오버레이 -->
-                <div style="position:absolute;inset:0;display:flex;align-items:center;padding-left:24%;padding-right:4%;">
-                  <span style="font-weight:900;font-size:clamp(1.3rem,3.2vw,2.2rem);color:#2F2B28;letter-spacing:-0.02em;font-family:'HSHwalkongSerif','Noto Serif KR',serif;">${TEAM_NAMES[id]}</span>
-                </div>
-              </div>
-              <!-- 스텁 -->
-              <div id="stub-${id}" style="flex:1.2 0 0;min-width:0;height:100%;">
-                <img src="/static/ticket-stub.png" alt="탑승권 스텁"
-                  style="display:block;width:100%;height:100%;object-fit:contain;object-position:center center;border-radius:0 10px 10px 0;background:#f5f0eb;" draggable="false"/>
-              </div>
+          <!-- 좌측: 메인 티켓 (조 이름 오버레이) -->
+          <div style="position:relative;flex:${769} 0 0;min-width:0;">
+            <img src="/static/ticket-main.png" alt="탑승권"
+              style="display:block;width:100%;height:100%;object-fit:cover;object-position:center;" draggable="false"/>
+            <!-- 조 이름 -->
+            <div style="
+              position:absolute;inset:0;
+              display:flex;align-items:center;justify-content:center;
+            ">
+              <span style="
+                font-family:'HSHwalkongSerif','Noto Serif KR',serif;
+                font-weight:900;
+                font-size:clamp(1.4rem,4vw,2rem);
+                color:#2F2B28;
+                letter-spacing:0.02em;
+                text-shadow:0 1px 4px rgba(255,255,255,0.6);
+              ">${TEAM_NAMES[id]}</span>
             </div>
-          `).join('')}
-        </div>
+          </div>
 
-        <!-- 안내 박스 -->
-        <div class="message-box fade-in-up-d3" style="padding:1.25rem;text-align:center;border-top:3px solid #61B7B2;">
-          <p style="color:#5C4438;font-size:0.88rem;line-height:1.75;">
-            탑승권을 선택하면 해당 조의 빙고판으로 이동합니다.<br>
-            조원들과 함께 미션을 완수하고 빙고를 완성해보세요! 🎉
-          </p>
+          <!-- 우측: 스텁 -->
+          <div style="flex:${314} 0 0;min-width:0;">
+            <img src="/static/ticket-stub.png" alt="탑승권 스텁"
+              style="display:block;width:100%;height:100%;object-fit:cover;object-position:center;" draggable="false"/>
+          </div>
+
         </div>
-      </div>
+      `).join('')}
+
     </div>
   </div>`;
 }
