@@ -315,7 +315,7 @@ function renderHome() {
           box-shadow:0 4px 18px rgba(213,30,42,0.45);
           letter-spacing:0.07em;
           transition:all 0.2s;
-          font-family:'Noto Sans KR',sans-serif;
+          font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;
         "
         onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 7px 24px rgba(213,30,42,0.55)';"
         onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 18px rgba(213,30,42,0.45)';">
@@ -333,7 +333,7 @@ function renderHome() {
           border:1.5px solid rgba(255,255,255,0.7);
           letter-spacing:0.07em;
           transition:all 0.2s;
-          font-family:'Noto Sans KR',sans-serif;
+          font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;
           backdrop-filter:blur(4px);
         "
         onmouseover="this.style.background='white';this.style.transform='translateY(-2px)';"
