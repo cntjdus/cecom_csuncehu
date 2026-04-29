@@ -374,6 +374,18 @@ function renderAbout() {
       margin:0 auto;
       padding: 52vw 1rem 4rem;
     ">
+      <!-- 페이지 타이틀 -->
+      <div style="margin-bottom:1.5rem;text-align:center;">
+        <h1 style="
+          font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;
+          font-size:3.0rem;
+          font-weight:900;
+          color:#2F2B28;
+          letter-spacing:0.04em;
+          line-height:1.2;
+        ">쎄선쎄후란?</h1>
+      </div>
+
       <!-- 소개 카드들 -->
       <div style="display:flex;flex-direction:column;gap:1rem;">
         ${[
