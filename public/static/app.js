@@ -366,6 +366,9 @@ function renderAbout() {
     background-color: #f5b7b3;
   ">
 
+    <!-- 배경 블러 오버레이 -->
+    <div style="position:absolute;inset:0;background:rgba(245,220,215,0.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:1;pointer-events:none;"></div>
+
     <!-- 설명 카드 오버레이 (이미지 위에 자연스럽게) -->
     <div style="
       position:relative;
