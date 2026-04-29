@@ -175,13 +175,7 @@ function renderNavbar() {
 
         <!-- 로고 -->
         <a href="/" onclick="navigate('/');return false;" style="display:flex;align-items:center;text-decoration:none;gap:0.4rem;">
-          <span style="
-            font-size:1.55rem;font-weight:900;
-            color:#D51E2A;
-            letter-spacing:-0.02em;
-            font-family:'Noto Sans KR',sans-serif;
-            line-height:1;
-          ">쎄선쎄후</span>
+          <img src="/static/title-logo.png" alt="쎄선쎄후" style="height:36px;width:auto;object-fit:contain;" />
         </a>
 
         <!-- 데스크탑 메뉴 -->
@@ -228,7 +222,7 @@ function renderNavbar() {
   <!-- 모바일 드로어 -->
   <div class="mobile-drawer" id="mobile-drawer">
     <div style="display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid rgba(180,140,110,0.2);">
-      <span style="font-size:1.3rem;font-weight:900;color:#D51E2A;font-family:'Noto Sans KR',sans-serif;">쎄선쎄후</span>
+      <img src="/static/title-logo.png" alt="쎄선쎄후" style="height:30px;width:auto;object-fit:contain;" />
       <button onclick="closeMobileMenu()" style="background:none;border:none;cursor:pointer;color:#D51E2A;padding:0.4rem;">
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
@@ -292,7 +286,7 @@ function renderHome() {
   ">
     <!-- 히어로 이미지 (전체 화면 꽉 채우기) -->
     <img
-      src="/static/hero-bg.jpg"
+      src="/static/hero-bg2.jpg"
       alt="쎄선쎄후 히어로 배경"
       style="
         position:absolute;
@@ -386,7 +380,7 @@ function renderAbout() {
       </svg>
       <div style="position:relative;z-index:10;max-width:38rem;margin:0 auto;">
         <p style="font-size:0.7rem;letter-spacing:0.28em;color:rgba(255,255,255,0.85);margin-bottom:0.75rem;font-weight:600;text-transform:uppercase;">세움 오리지널</p>
-        <h1 class="title-serif" style="font-size:clamp(2.8rem,9vw,5rem);color:#5C3A1E;margin-bottom:0.5rem;">쎄선쎄후</h1>
+        <img src="/static/title-logo.png" alt="쎄선쎄후" style="height:clamp(3rem,10vw,5.5rem);width:auto;object-fit:contain;margin-bottom:0.5rem;" />
         <p style="font-size:1.1rem;font-weight:600;color:rgba(92,58,30,0.85);margin-bottom:0.25rem;">쎄선쎄후란?</p>
         <p style="font-size:0.9rem;color:rgba(92,58,30,0.7);letter-spacing:0.1em;font-family:'Noto Serif KR',serif;">Another beginning ✈</p>
       </div>
@@ -403,7 +397,7 @@ function renderAbout() {
           <div style="position:absolute;bottom:0.5rem;left:0.5rem;width:0.8rem;height:0.8rem;border-bottom:2px solid rgba(181,140,100,0.45);border-left:2px solid rgba(181,140,100,0.45);"></div>
           <div style="position:absolute;bottom:0.5rem;right:0.5rem;width:0.8rem;height:0.8rem;border-bottom:2px solid rgba(181,140,100,0.45);border-right:2px solid rgba(181,140,100,0.45);"></div>
           <p style="font-size:0.68rem;letter-spacing:0.22em;color:#9B7355;margin-bottom:0.75rem;font-weight:600;text-transform:uppercase;">ABOUT US</p>
-          <div class="title-serif" style="font-size:2.5rem;margin-bottom:0.75rem;">쎄선쎄후 ✈</div>
+          <img src="/static/title-logo.png" alt="쎄선쎄후" style="height:3rem;width:auto;object-fit:contain;margin-bottom:0.75rem;" />
           <p style="font-size:0.95rem;font-weight:600;margin-bottom:0.25rem;color:#2F2B28;">
             <span style="color:#D51E2A;">쎄콤</span> 선배, <span style="color:#D51E2A;">쎄콤</span> 후배
           </p>
@@ -480,7 +474,7 @@ function renderMemories() {
         <!-- 헤더 -->
         <div style="text-align:center;" class="fade-in-up-d1">
           <p style="font-size:0.7rem;letter-spacing:0.28em;color:rgba(255,255,255,0.85);margin-bottom:0.6rem;font-weight:600;text-transform:uppercase;">세움 오리지널</p>
-          <h1 class="title-serif" style="font-size:clamp(2.5rem,8vw,4.5rem);color:#5C3A1E;margin-bottom:0.5rem;text-shadow:0 2px 12px rgba(255,255,255,0.4);">쎄선쎄후</h1>
+          <img src="/static/title-logo.png" alt="쎄선쎄후" style="height:clamp(2.5rem,8vw,4.5rem);width:auto;object-fit:contain;margin-bottom:0.5rem;filter:drop-shadow(0 2px 12px rgba(255,255,255,0.4));" />
           <p style="font-size:1rem;color:rgba(92,58,30,0.85);font-weight:500;">탑승권을 선택해주세요! 🎫</p>
         </div>
 
