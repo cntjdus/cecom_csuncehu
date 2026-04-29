@@ -810,7 +810,7 @@ function renderBingoCell(cell, isCompleted) {
       ${isCompleted ? '<div style="position:absolute;top:0.2rem;right:0.2rem;z-index:10;font-size:0.7rem;">✅</div>' : ''}
     </div>
     <div style="position:absolute;bottom:0;left:0;right:0;padding:0.1rem 0.2rem;z-index:10;">
-      <p style="text-align:center;line-height:1.2;font-size:clamp(0.45rem,1.25vw,0.68rem);font-weight:700;color:white;text-shadow:0 1px 4px rgba(0,0,0,0.9);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${cell.mission}</p>
+      <p style="text-align:center;line-height:1.2;font-size:clamp(0.45rem,1.25vw,0.68rem);font-weight:700;color:white;text-shadow:0 1px 4px rgba(0,0,0,0.9);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;">${cell.mission}</p>
     </div>
     ` : `
     <div class="hover-overlay" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s;z-index:10;border-radius:5px;background:rgba(249,206,206,0.85);">
@@ -818,7 +818,7 @@ function renderBingoCell(cell, isCompleted) {
       <span style="font-size:0.52rem;font-weight:600;color:#D51E2A;">사진 추가</span>
     </div>
     <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0.35rem;z-index:1;">
-      <p style="text-align:center;line-height:1.3;font-size:clamp(0.48rem,1.4vw,0.74rem);color:#7A5C3E;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-family:'Noto Sans KR',sans-serif;">${cell.mission}</p>
+      <p style="text-align:center;line-height:1.3;font-size:clamp(0.48rem,1.4vw,0.74rem);color:#7A5C3E;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;">${cell.mission}</p>
     </div>
     <span style="position:absolute;top:0.1rem;left:0.2rem;font-size:0.48rem;color:#C4A882;font-family:monospace;z-index:0;line-height:1;">${cell.id + 1}</span>
     `}
@@ -972,7 +972,7 @@ function renderPhotoModal(cell) {
       <div style="position:relative;background:#F8F3ED;border-bottom:1px solid rgba(181,140,100,0.25);padding:1.4rem 1.25rem 1rem;">
         <!-- 마스킹 테이프 장식 -->
         <div style="position:absolute;top:-0.45rem;left:50%;transform:translateX(-50%) rotate(-1deg);width:5.5rem;height:1.3rem;background:rgba(213,30,42,0.5);border-radius:2px;z-index:1;"></div>
-        <h2 style="text-align:center;color:#5C3A1E;font-size:1.1rem;font-weight:700;margin-top:0.2rem;font-family:'Noto Sans KR',sans-serif;">📸 미션 사진 첨부</h2>
+        <h2 style="text-align:center;color:#5C3A1E;font-size:1.1rem;font-weight:700;margin-top:0.2rem;font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;">📸 미션 사진 첨부</h2>
         <div style="margin-top:0.5rem;text-align:center;">
           <span style="display:inline-block;background:#FDFAF6;border:1px solid rgba(181,140,100,0.3);border-radius:0.5rem;padding:0.35rem 0.7rem;font-size:0.84rem;font-weight:500;color:#5C3A1E;max-width:100%;">${cell?.mission || ''}</span>
         </div>
@@ -1116,13 +1116,13 @@ function openEditModal(cellId) {
   <div class="modal-overlay" onclick="closeModalIfOutside(event)">
     <div class="modal-box">
       <div style="background:#F8F3ED;border-bottom:1px solid rgba(181,140,100,0.25);padding:1.25rem;">
-        <h2 style="text-align:center;color:#5C3A1E;font-size:1.05rem;font-weight:700;font-family:'Noto Sans KR',sans-serif;">✏️ 미션 문구 수정</h2>
+        <h2 style="text-align:center;color:#5C3A1E;font-size:1.05rem;font-weight:700;font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;">✏️ 미션 문구 수정</h2>
       </div>
       <div style="background:#FAF7F3;padding:1.25rem;">
         <p style="font-size:0.78rem;color:#9B7355;margin-bottom:0.4rem;">현재 미션:</p>
         <p style="font-size:0.875rem;color:#5C3A1E;background:#F5EEE8;padding:0.5rem 0.75rem;border-radius:0.5rem;margin-bottom:1rem;border:1px solid rgba(181,140,100,0.2);">${cell.mission}</p>
         <p style="font-size:0.78rem;color:#9B7355;margin-bottom:0.4rem;">새로운 미션:</p>
-        <textarea id="mission-input" rows="3" style="width:100%;padding:0.6rem 0.75rem;border:1px solid rgba(181,140,100,0.35);border-radius:0.5rem;font-size:0.875rem;background:white;resize:none;outline:none;font-family:'Noto Sans KR',sans-serif;color:#2F2B28;" placeholder="새로운 미션을 입력하세요...">${cell.mission}</textarea>
+        <textarea id="mission-input" rows="3" style="width:100%;padding:0.6rem 0.75rem;border:1px solid rgba(181,140,100,0.35);border-radius:0.5rem;font-size:0.875rem;background:white;resize:none;outline:none;font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;color:#2F2B28;" placeholder="새로운 미션을 입력하세요...">${cell.mission}</textarea>
       </div>
       <div style="background:#F8F3ED;border-top:1px solid rgba(181,140,100,0.2);padding:0.875rem 1.25rem;display:flex;gap:0.5rem;justify-content:flex-end;">
         <button onclick="closeModal()" style="padding:0.45rem 0.9rem;border-radius:0.5rem;border:1px solid rgba(181,140,100,0.3);background:white;color:#7A5C3E;font-size:0.84rem;cursor:pointer;">취소</button>
