@@ -212,20 +212,20 @@ function renderNavbar() {
     </div>
     <nav style="display:flex;flex-direction:column;padding:1.5rem;gap:0.25rem;">
       <a href="/" onclick="navigate('/');closeMobileMenu();return false;"
-        style="padding:0.75rem 1rem;border-radius:0.75rem;text-decoration:none;font-family:'Noto Sans KR',sans-serif;font-weight:500;font-size:0.95rem;
+        style="padding:0.75rem 1rem;border-radius:0.75rem;text-decoration:none;font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;font-weight:500;font-size:0.95rem;
         background:${isActive('/') ? 'rgba(213,30,42,0.08)' : 'transparent'};
         color:${isActive('/') ? '#D51E2A' : '#4a3f38'};">HOME</a>
       <a href="/about" onclick="navigate('/about');closeMobileMenu();return false;"
-        style="padding:0.75rem 1rem;border-radius:0.75rem;text-decoration:none;font-family:'Noto Sans KR',sans-serif;font-weight:500;font-size:0.95rem;
+        style="padding:0.75rem 1rem;border-radius:0.75rem;text-decoration:none;font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;font-weight:500;font-size:0.95rem;
         background:${isActive('/about') ? 'rgba(213,30,42,0.08)' : 'transparent'};
         color:${isActive('/about') ? '#D51E2A' : '#4a3f38'};">쎄선쎄후란?</a>
       <a href="/memories" onclick="navigate('/memories');closeMobileMenu();return false;"
-        style="padding:0.75rem 1rem;border-radius:0.75rem;text-decoration:none;font-family:'Noto Sans KR',sans-serif;font-weight:500;font-size:0.95rem;
+        style="padding:0.75rem 1rem;border-radius:0.75rem;text-decoration:none;font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;font-weight:500;font-size:0.95rem;
         background:${isActive('/memories') ? 'rgba(213,30,42,0.08)' : 'transparent'};
         color:${isActive('/memories') ? '#D51E2A' : '#4a3f38'};">우리의 추억</a>
       <div style="padding:0.75rem 1rem;">
         <a href="/memories" onclick="navigate('/memories');closeMobileMenu();return false;"
-          style="display:block;text-align:center;padding:0.6rem 1rem;border-radius:6px;border:1.5px solid #D51E2A;background:white;color:#D51E2A;font-size:0.88rem;font-weight:600;text-decoration:none;font-family:'Noto Sans KR',sans-serif;">
+          style="display:block;text-align:center;padding:0.6rem 1rem;border-radius:6px;border:1.5px solid #D51E2A;background:white;color:#D51E2A;font-size:0.88rem;font-weight:600;text-decoration:none;font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;">
           빙고 입장
         </a>
       </div>
