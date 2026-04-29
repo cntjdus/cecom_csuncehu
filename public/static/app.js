@@ -372,7 +372,7 @@ function renderAbout() {
       z-index:10;
       max-width:46rem;
       margin:0 auto;
-      padding: 52vw 1rem 4rem;
+      padding: 20vw 1rem 4rem;
     ">
       <!-- 페이지 타이틀 -->
       <div style="margin-bottom:1.5rem;text-align:center;">
