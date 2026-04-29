@@ -446,7 +446,10 @@ function renderMemories() {
     }
     .ticket-team-label {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -454,11 +457,12 @@ function renderMemories() {
     }
     .ticket-team-label span {
       font-family: 'HSHwalkongSerif', 'Noto Serif KR', serif;
-      font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+      font-size: clamp(2rem, 6vw, 3rem);
       font-weight: 900;
       color: #2F2B28;
-      letter-spacing: 0.04em;
-      text-shadow: 0 1px 6px rgba(255,255,255,0.7), 0 2px 12px rgba(255,255,255,0.4);
+      letter-spacing: 0.06em;
+      text-shadow: 0 1px 8px rgba(255,255,255,0.85), 0 2px 16px rgba(255,255,255,0.5);
+      line-height: 1;
     }
     .ticket-stub-wrap {
       flex: ${stubRatio};
