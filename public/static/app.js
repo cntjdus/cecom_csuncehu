@@ -545,10 +545,10 @@ function selectTeam(teamId) {
 // ─────────────────────────────────────────────────────────────
 async function renderTeamBingo(teamId) {
   document.getElementById('app-content').innerHTML = `
-  <div style="min-height:100vh;padding-top:64px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#d95050 0%,#c03030 50%,#a01818 100%);">
-    <div style="text-align:center;">
-      <div style="width:2.5rem;height:2.5rem;border:3px solid rgba(255,255,255,0.3);border-top-color:white;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 1rem;"></div>
-      <p style="color:rgba(255,255,255,0.9);font-size:0.95rem;">데이터를 불러오는 중...</p>
+  <div style="min-height:100vh;padding-top:64px;display:flex;align-items:center;justify-content:center;background-image:url('/static/about-bg.jpg');background-size:100% auto;background-position:center top;background-repeat:no-repeat;background-color:#f5b7b3;">
+    <div style="text-align:center;background:rgba(255,255,255,0.75);padding:2rem 2.5rem;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+      <div style="width:2.5rem;height:2.5rem;border:3px solid rgba(213,30,42,0.25);border-top-color:#D51E2A;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 1rem;"></div>
+      <p style="color:#5a2a2a;font-size:0.95rem;font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;">데이터를 불러오는 중...</p>
     </div>
   </div>`;
 
@@ -574,14 +574,9 @@ function renderBingoPage(teamId) {
   const completedCells = getCompletedCellIndices(completedLines);
 
   document.getElementById('app-content').innerHTML = `
-  <div style="min-height:100vh;padding-top:64px;position:relative;overflow:hidden;" class="craft-paper-bg" id="bingo-page">
-    <!-- 빨간 실 장식 -->
-    <svg style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.25;z-index:0;" viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice">
-      <path d="M 40 0 C 20 150, 65 320, 35 500 C 15 650, 50 780, 30 900"
-        fill="none" stroke="#ffaaaa" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M 760 0 C 780 140, 740 300, 765 490 C 785 640, 750 770, 770 900"
-        fill="none" stroke="#ffaaaa" stroke-width="2.5" stroke-linecap="round"/>
-    </svg>
+  <div style="min-height:100vh;padding-top:64px;position:relative;overflow:hidden;background-image:url('/static/about-bg.jpg');background-size:100% auto;background-position:center top;background-repeat:no-repeat;background-color:#f5b7b3;" id="bingo-page">
+    <!-- 반투명 오버레이 (카드 가독성 향상) -->
+    <div style="position:fixed;inset:0;background:rgba(245,183,179,0.25);z-index:0;pointer-events:none;"></div>
     <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
 
     <!-- 빙고 완성 배너 -->
