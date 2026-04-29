@@ -427,7 +427,7 @@ function renderMemories() {
       display: flex;
       align-items: stretch;
       width: 100%;
-      max-width: 560px;
+      max-width: 420px;
       border-radius: 14px;
       overflow: hidden;
       box-shadow: 0 6px 24px rgba(40,20,20,0.22);
