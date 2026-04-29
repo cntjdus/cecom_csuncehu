@@ -509,8 +509,7 @@ function renderMemories() {
     ">
       <!-- 헤더 -->
       <div style="text-align:center;margin-bottom:0.8rem;">
-        <img src="/static/title-logo.png" alt="쎄선쎄후" style="height:3rem;object-fit:contain;"/>
-        <p style="margin-top:0.5rem;font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;font-size:1rem;color:#5a2a2a;letter-spacing:0.06em;">탑승권을 선택해주세요 🎫</p>
+        <p style="font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;font-size:1.6rem;font-weight:900;color:#5a2a2a;letter-spacing:0.06em;">탑승권을 선택해주세요 🎫</p>
       </div>
 
       ${teams.map(id => `
