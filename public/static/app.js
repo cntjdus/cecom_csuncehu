@@ -186,25 +186,6 @@ function renderNavbar() {
             class="nav-link ${isActive('/about') ? 'active' : ''}">쎄선쎄후란?</a>
           <a href="/memories" onclick="navigate('/memories');return false;"
             class="nav-link ${isActive('/memories') ? 'active' : ''}">우리의 추억</a>
-          <!-- 빙고 입장 버튼 -->
-          <a href="/memories" onclick="navigate('/memories');return false;"
-            style="
-              padding:0.4rem 1.1rem;
-              border-radius:6px;
-              border:1.5px solid #D51E2A;
-              background:white;
-              color:#D51E2A;
-              font-size:0.82rem;
-              font-weight:600;
-              text-decoration:none;
-              letter-spacing:0.04em;
-              transition:all 0.2s;
-              font-family:'Noto Sans KR',sans-serif;
-            "
-            onmouseover="this.style.background='#D51E2A';this.style.color='white';"
-            onmouseout="this.style.background='white';this.style.color='#D51E2A';">
-            빙고 입장
-          </a>
         </nav>
 
         <!-- 모바일 햄버거 -->
@@ -370,7 +351,7 @@ function renderAbout() {
   return `
   <div style="min-height:100vh;padding-top:64px;background:#F5EEE8;">
     <!-- 헤더 -->
-    <section style="position:relative;padding:4.5rem 1rem 3.5rem;text-align:center;overflow:hidden;background:linear-gradient(160deg,#F9CECE 0%,#F5B7B3 40%,#E08888 100%);">
+    <section style="position:relative;padding:4.5rem 1rem 3.5rem;text-align:center;overflow:hidden;background-image:url('/static/other-bg-crop.jpg');background-size:cover;background-position:center top;">
       <!-- 빨간 실 -->
       <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice">
         <path d="M 40 -10 C 20 60, 70 140, 40 220 C 20 280, 55 300 40 310"
@@ -449,7 +430,7 @@ function renderAbout() {
 function renderMemories() {
   const teams = [1,2,3,4,5];
   return `
-  <div style="min-height:100vh;padding-top:64px;position:relative;overflow:hidden;background:linear-gradient(160deg,#F9CECE 0%,#F5B7B3 30%,#EDA0A0 60%,#E08888 100%);">
+  <div style="min-height:100vh;padding-top:64px;position:relative;overflow:hidden;background-image:url('/static/other-bg-crop.jpg');background-size:cover;background-position:center top;">
 
     <!-- 빨간 실 -->
     <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;" viewBox="0 0 1000 900" preserveAspectRatio="xMidYMid slice">
