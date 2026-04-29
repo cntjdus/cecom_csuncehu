@@ -407,59 +407,116 @@ function renderAbout() {
 
 // ─────────────────────────────────────────────────────────────
 // ─── Memories / TeamSelector 페이지 ───────────────────────────
-// 배경: 홈과 동일한 핑크-코랄 그라디언트
-// 탑승권 카드 리스트
 // ─────────────────────────────────────────────────────────────
 function renderMemories() {
   const teams = [1,2,3,4,5];
-  return `
-  <div style="min-height:100vh;padding-top:64px;position:relative;overflow:hidden;background-image:url('/static/about-bg.jpg');background-size:100% auto;background-position:center top;background-repeat:no-repeat;background-color:#f5b7b3;">
+  // ticket-main: 752px, ticket-stub: 299px → 비율 752:299
+  const mainRatio = 752;
+  const stubRatio = 299;
+  const totalRatio = mainRatio + stubRatio; // 1051
 
-    <div style="position:relative;z-index:10;min-height:calc(100vh - 64px);padding:3rem 1rem 4rem;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:1.2rem;">
+  return `
+  <style>
+    .ticket-card {
+      cursor: pointer;
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+      max-width: 560px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(40,20,20,0.22);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .ticket-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(40,20,20,0.30);
+    }
+    .ticket-main-wrap {
+      position: relative;
+      flex: ${mainRatio};
+      min-width: 0;
+    }
+    .ticket-main-wrap img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .ticket-team-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .ticket-team-label span {
+      font-family: 'HSHwalkongSerif', 'Noto Serif KR', serif;
+      font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+      font-weight: 900;
+      color: #2F2B28;
+      letter-spacing: 0.04em;
+      text-shadow: 0 1px 6px rgba(255,255,255,0.7), 0 2px 12px rgba(255,255,255,0.4);
+    }
+    .ticket-stub-wrap {
+      flex: ${stubRatio};
+      min-width: 0;
+    }
+    .ticket-stub-wrap img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  </style>
+
+  <div style="
+    min-height: 100vh;
+    padding-top: 64px;
+    position: relative;
+    overflow: hidden;
+    background-image: url('/static/about-bg.jpg');
+    background-size: 100% auto;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-color: #f5b7b3;
+  ">
+    <!-- 반투명 오버레이 (카드 가독성 향상) -->
+    <div style="position:absolute;inset:0;background:rgba(245,183,179,0.35);z-index:1;pointer-events:none;"></div>
+
+    <div style="
+      position: relative;
+      z-index: 10;
+      min-height: calc(100vh - 64px);
+      padding: 3rem 1.2rem 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1.4rem;
+    ">
+      <!-- 헤더 -->
+      <div style="text-align:center;margin-bottom:0.8rem;">
+        <img src="/static/title-logo.png" alt="쎄선쎄후" style="height:3rem;object-fit:contain;"/>
+        <p style="margin-top:0.5rem;font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;font-size:1rem;color:#5a2a2a;letter-spacing:0.06em;">탑승권을 선택해주세요 🎫</p>
+      </div>
 
       ${teams.map(id => `
-        <!-- ${id}조 카드 -->
-        <div onclick="navigate('/team/${id}')"
-          style="
-            cursor:pointer;
-            display:flex;
-            align-items:stretch;
-            width:100%;
-            max-width:480px;
-            border-radius:12px;
-            overflow:hidden;
-            box-shadow:0 4px 18px rgba(47,43,40,0.18);
-            transition:transform 0.18s,box-shadow 0.18s;
-          "
-          onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 28px rgba(47,43,40,0.26)';"
-          onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 18px rgba(47,43,40,0.18)';">
-
-          <!-- 좌측: 메인 티켓 (조 이름 오버레이) -->
-          <div style="position:relative;flex:${769} 0 0;min-width:0;">
-            <img src="/static/ticket-main.png" alt="탑승권"
-              style="display:block;width:100%;height:100%;object-fit:cover;object-position:center;" draggable="false"/>
-            <!-- 조 이름 -->
-            <div style="
-              position:absolute;inset:0;
-              display:flex;align-items:center;justify-content:center;
-            ">
-              <span style="
-                font-family:'HSHwalkongSerif','Noto Serif KR',serif;
-                font-weight:900;
-                font-size:clamp(1.4rem,4vw,2rem);
-                color:#2F2B28;
-                letter-spacing:0.02em;
-                text-shadow:0 1px 4px rgba(255,255,255,0.6);
-              ">${TEAM_NAMES[id]}</span>
+        <div class="ticket-card" onclick="navigate('/team/${id}')">
+          <!-- 좌측: 메인 티켓 + 조 이름 -->
+          <div class="ticket-main-wrap">
+            <img src="/static/ticket-main.png" alt="${TEAM_NAMES[id]} 탑승권" draggable="false"/>
+            <div class="ticket-team-label">
+              <span>${TEAM_NAMES[id]}</span>
             </div>
           </div>
-
           <!-- 우측: 스텁 -->
-          <div style="flex:${314} 0 0;min-width:0;">
-            <img src="/static/ticket-stub.png" alt="탑승권 스텁"
-              style="display:block;width:100%;height:100%;object-fit:cover;object-position:center;" draggable="false"/>
+          <div class="ticket-stub-wrap">
+            <img src="/static/ticket-stub.png" alt="탑승권 스텁" draggable="false"/>
           </div>
-
         </div>
       `).join('')}
 
