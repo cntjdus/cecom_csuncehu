@@ -456,17 +456,17 @@ function renderMemories() {
               ">
               <!-- 메인 티켓 -->
               <div style="flex:3 0 0;min-width:0;height:100%;position:relative;">
-                <img src="${TICKET_MAIN_IMG}" alt="탑승권 메인"
-                  style="display:block;width:100%;height:100%;object-fit:fill;border-radius:10px 0 0 10px;" draggable="false"/>
+                <img src="/static/ticket-main.png" alt="탑승권 메인"
+                  style="display:block;width:100%;height:100%;object-fit:contain;object-position:left center;border-radius:10px 0 0 10px;background:#f5f0eb;" draggable="false"/>
                 <!-- 조 이름 오버레이 -->
                 <div style="position:absolute;inset:0;display:flex;align-items:center;padding-left:24%;padding-right:4%;">
-                  <span style="font-weight:900;font-size:clamp(1.3rem,3.2vw,2.2rem);color:#2F2B28;letter-spacing:-0.02em;font-family:'Noto Serif KR',serif;">${TEAM_NAMES[id]}</span>
+                  <span style="font-weight:900;font-size:clamp(1.3rem,3.2vw,2.2rem);color:#2F2B28;letter-spacing:-0.02em;font-family:'HSHwalkongSerif','Noto Serif KR',serif;">${TEAM_NAMES[id]}</span>
                 </div>
               </div>
               <!-- 스텁 -->
-              <div id="stub-${id}" style="flex:2 0 0;min-width:0;height:100%;">
-                <img src="${TICKET_STUB_IMG}" alt="탑승권 스텁"
-                  style="display:block;width:100%;height:100%;object-fit:fill;border-radius:0 10px 10px 0;" draggable="false"/>
+              <div id="stub-${id}" style="flex:1.2 0 0;min-width:0;height:100%;">
+                <img src="/static/ticket-stub.png" alt="탑승권 스텁"
+                  style="display:block;width:100%;height:100%;object-fit:contain;object-position:center center;border-radius:0 10px 10px 0;background:#f5f0eb;" draggable="false"/>
               </div>
             </div>
           `).join('')}
