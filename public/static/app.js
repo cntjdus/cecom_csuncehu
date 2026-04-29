@@ -267,7 +267,7 @@ function renderHome() {
   ">
     <!-- 히어로 이미지 (전체 화면 꽉 채우기) -->
     <img
-      src="/static/hero-bg2.jpg"
+      src="/static/hero-bg-new.jpg"
       alt="쎄선쎄후 히어로 배경"
       style="
         position:absolute;
