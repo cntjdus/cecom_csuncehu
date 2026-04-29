@@ -307,37 +307,42 @@ function renderHome() {
         style="
           display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;
           padding:0.85rem 2.2rem;
-          border-radius:6px;
+          border-radius:30px;
           font-size:0.92rem;font-weight:700;
           text-decoration:none;
-          background:#D51E2A;
+          background:rgba(213,30,42,0.35);
           color:white;
-          box-shadow:0 4px 18px rgba(213,30,42,0.45);
+          border:1.5px solid rgba(255,255,255,0.55);
+          box-shadow:0 4px 18px rgba(0,0,0,0.15);
           letter-spacing:0.07em;
-          transition:all 0.2s;
+          transition:all 0.22s;
           font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;
+          backdrop-filter:blur(8px);
+          -webkit-backdrop-filter:blur(8px);
         "
-        onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 7px 24px rgba(213,30,42,0.55)';"
-        onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 18px rgba(213,30,42,0.45)';">
+        onmouseover="this.style.background='rgba(213,30,42,0.6)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.22)';"
+        onmouseout="this.style.background='rgba(213,30,42,0.35)';this.style.transform='translateY(0)';this.style.boxShadow='0 4px 18px rgba(0,0,0,0.15)';">
         우리의 추억 →
       </a>
       <a href="/about" onclick="navigate('/about');return false;"
         style="
           display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;
           padding:0.85rem 2.2rem;
-          border-radius:6px;
+          border-radius:30px;
           font-size:0.92rem;font-weight:600;
           text-decoration:none;
-          background:rgba(255,255,255,0.88);
-          color:#5C3A1E;
-          border:1.5px solid rgba(255,255,255,0.7);
+          background:rgba(255,255,255,0.22);
+          color:white;
+          border:1.5px solid rgba(255,255,255,0.55);
+          box-shadow:0 4px 18px rgba(0,0,0,0.12);
           letter-spacing:0.07em;
-          transition:all 0.2s;
+          transition:all 0.22s;
           font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;
-          backdrop-filter:blur(4px);
+          backdrop-filter:blur(8px);
+          -webkit-backdrop-filter:blur(8px);
         "
-        onmouseover="this.style.background='white';this.style.transform='translateY(-2px)';"
-        onmouseout="this.style.background='rgba(255,255,255,0.88)';this.style.transform='translateY(0)';">
+        onmouseover="this.style.background='rgba(255,255,255,0.4)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.18)';"
+        onmouseout="this.style.background='rgba(255,255,255,0.22)';this.style.transform='translateY(0)';this.style.boxShadow='0 4px 18px rgba(0,0,0,0.12)';">
         쎄선쎄후란?
       </a>
     </div>
