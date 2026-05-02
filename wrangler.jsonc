@@ -1,14 +1,22 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "club-bingo",
-  "compatibility_date": "2026-04-13",
-  "pages_build_output_dir": "./dist",
-  "compatibility_flags": ["nodejs_compat"],
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "club-bingo-production",
-      "database_id": "f918003e-041f-4ddc-a5b2-34d8fc0a3f33"
-    }
-  ]
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "club-bingo",
+	"compatibility_date": "2026-04-13",
+	"pages_build_output_dir": "./dist",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "club-bingo-production",
+			"database_id": "ae4770a1-ef04-4e69-b829-4ba8bc7bfe83"
+		},
+		{
+			"binding": "club_bingo_production",
+			"database_name": "club-bingo-production",
+			"database_id": "ae4770a1-ef04-4e69-b829-4ba8bc7bfe83",
+			"remote": true
+		}
+	]
 }
