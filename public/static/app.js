@@ -355,7 +355,7 @@ function renderAbout() {
     padding-top:64px;
     position:relative;
     /* 원본 세로형 이미지(563x1024)를 비율 그대로, 가로 100% 꽉 채워 반복없이 */
-    background-image: url('/static/about-bg.webp');
+    background-image: url('/static/newone.png');
     background-size: 100% auto;
     background-position: center top;
     background-repeat: no-repeat;
@@ -371,7 +371,7 @@ function renderAbout() {
       z-index:10;
       max-width:46rem;
       margin:0 auto;
-      padding: 20vw 1rem 4rem;
+      padding: 8vw 1rem 4rem;
     ">
       <!-- 페이지 타이틀 -->
       <div style="margin-bottom:1.5rem;text-align:center;">
@@ -547,7 +547,7 @@ function renderMemories() {
     padding-top: 64px;
     position: relative;
     overflow: hidden;
-    background-image: url('/static/about-bg.webp');
+    background-image: url('/static/newone.png');
     background-size: 100% auto;
     background-position: center top;
     background-repeat: no-repeat;
