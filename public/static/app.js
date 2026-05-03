@@ -355,7 +355,7 @@ function renderAbout() {
     padding-top:64px;
     position:relative;
     /* 원본 세로형 이미지(563x1024)를 비율 그대로, 가로 100% 꽉 채워 반복없이 */
-    background-image: url('/static/newone.png');
+    background-image: url('/static/newbackground1.png');
     background-size: 100% auto;
     background-position: center top;
     background-repeat: no-repeat;
@@ -363,7 +363,7 @@ function renderAbout() {
   ">
 
     <!-- 배경 블러 오버레이 -->
-    <div style="position:absolute;inset:0;background:rgba(245,220,215,0.15);backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(1px);z-index:1;pointer-events:none;"></div>
+    <div style="position:absolute;inset:0;background:rgba(245,220,215,0.15);z-index:1;pointer-events:none;"></div>
 
     <!-- 설명 카드 오버레이 (이미지 위에 자연스럽게) -->
     <div style="
@@ -547,7 +547,7 @@ function renderMemories() {
     padding-top: 64px;
     position: relative;
     overflow: hidden;
-    background-image: url('/static/newone.png');
+    background-image: url('/static/newbackground2.jpg');
     background-size: 100% auto;
     background-position: center top;
     background-repeat: no-repeat;
@@ -639,7 +639,7 @@ function tearTicket(teamId) {
 // ─────────────────────────────────────────────────────────────
 async function renderTeamBingo(teamId) {
   document.getElementById('app-content').innerHTML = `
-  <div style="min-height:100vh;padding-top:64px;display:flex;align-items:center;justify-content:center;background-image:url('/static/about-bg.webp');background-size:100% auto;background-position:center top;background-repeat:no-repeat;background-color:#f5b7b3;">
+  <div style="min-height:100vh;padding-top:64px;display:flex;align-items:center;justify-content:center;background-image:url('/static/newbackground2.jpg');background-size:100% auto;background-position:center top;background-repeat:no-repeat;background-color:#f5b7b3;">
     <div style="text-align:center;background:rgba(255,255,255,0.75);padding:2rem 2.5rem;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
       <div style="width:2.5rem;height:2.5rem;border:3px solid rgba(213,30,42,0.25);border-top-color:#D51E2A;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 1rem;"></div>
       <p style="color:#5a2a2a;font-size:0.95rem;font-family:'HSHwalkongSerif','Noto Sans KR',sans-serif;">데이터를 불러오는 중...</p>
@@ -668,7 +668,7 @@ function renderBingoPage(teamId) {
   const completedCells = getCompletedCellIndices(completedLines);
 
   document.getElementById('app-content').innerHTML = `
-  <div style="min-height:100vh;padding-top:64px;position:relative;overflow:hidden;background-image:url('/static/about-bg.webp');background-size:100% auto;background-position:center top;background-repeat:no-repeat;background-color:#f5b7b3;" id="bingo-page">
+  <div style="min-height:100vh;padding-top:64px;position:relative;overflow:hidden;background-image:url('/static/newbackground2.jpg');background-size:100% auto;background-position:center top;background-repeat:no-repeat;background-color:#f5b7b3;" id="bingo-page">
     <!-- 반투명 오버레이 (카드 가독성 향상) -->
     <div style="position:fixed;inset:0;background:rgba(245,183,179,0.25);z-index:0;pointer-events:none;"></div>
     <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
