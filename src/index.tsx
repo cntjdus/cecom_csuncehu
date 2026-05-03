@@ -4,6 +4,7 @@ import { serveStatic } from 'hono/cloudflare-workers'
 
 type Bindings = {
   DB: D1Database
+  IMAGES: R2Bucket
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
@@ -112,6 +113,36 @@ app.post('/api/bingo/:teamId', async (c) => {
     console.error('Failed to update board:', error)
     return c.json({ error: 'Failed to update bingo board' }, 500)
   }
+})
+
+// ─── API: 이미지 업로드 (R2) ────────────────────────────────
+app.post('/api/upload', async (c) => {
+  const body = await c.req.parseBody()
+  const file = body['file'] as File
+  if (!file || !(file instanceof File)) {
+    return c.json({ error: 'No file provided' }, 400)
+  }
+
+  const ext = file.type === 'image/png' ? 'png' : file.type === 'image/gif' ? 'gif' : 'jpg'
+  const key = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
+  await c.env.IMAGES.put(key, await file.arrayBuffer(), {
+    httpMetadata: { contentType: file.type || 'image/jpeg' }
+  })
+
+  return c.json({ url: `/api/images/${key}` })
+})
+
+// ─── API: 이미지 서빙 (R2) ──────────────────────────────────
+app.get('/api/images/:key', async (c) => {
+  const key = c.req.param('key')
+  const obj = await c.env.IMAGES.get(key)
+  if (!obj) return c.json({ error: 'Not found' }, 404)
+
+  const headers = new Headers()
+  obj.writeHttpMetadata(headers)
+  headers.set('cache-control', 'public, max-age=31536000')
+
+  return new Response(obj.body as ReadableStream, { headers })
 })
 
 // ─── SPA fallback ────────────────────────────────────────────

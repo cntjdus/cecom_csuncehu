@@ -138,7 +138,7 @@ function compressImage(file) {
         canvas.width = w; canvas.height = h;
         const ctx = canvas.getContext('2d');
         ctx.drawImage(img, 0, 0, w, h);
-        resolve(canvas.toDataURL('image/jpeg', 0.8));
+        canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('toBlob failed')), 'image/jpeg', 0.8);
       };
       img.onerror = reject;
       img.src = e.target.result;
@@ -1065,16 +1065,21 @@ async function processImageFile(file) {
   if (body) body.innerHTML = `
     <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;gap:0.75rem;">
       <div style="width:2rem;height:2rem;border:3px solid rgba(92,58,30,0.2);border-top-color:#D51E2A;border-radius:50%;animation:spin 0.8s linear infinite;"></div>
-      <p style="font-size:0.875rem;font-weight:500;color:#5C3A1E;">이미지 압축 중...</p>
+      <p style="font-size:0.875rem;font-weight:500;color:#5C3A1E;">이미지 업로드 중...</p>
     </div>`;
   try {
-    const compressed = await compressImage(file);
-    currentPreview = compressed; isDeleted = false;
+    const blob = await compressImage(file);
+    const formData = new FormData();
+    formData.append('file', blob, 'photo.jpg');
+    const res = await fetch('/api/upload', { method: 'POST', body: formData });
+    if (!res.ok) throw new Error('Upload failed');
+    const { url } = await res.json();
+    currentPreview = url; isDeleted = false;
     const cell = bingoCells[currentCellId];
     renderPhotoModal(cell);
-    showToast('이미지 압축 완료!', 'success', 2000);
+    showToast('이미지 업로드 완료!', 'success', 2000);
   } catch {
-    showToast('이미지 처리 중 오류가 발생했습니다.', 'error');
+    showToast('이미지 업로드 중 오류가 발생했습니다.', 'error');
   }
 }
 
