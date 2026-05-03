@@ -694,7 +694,7 @@ function renderBingoPage(teamId) {
 
       <!-- 헤더 -->
       <div style="text-align:center;margin-bottom:1rem;">
-        <p style="font-size:0.65rem;letter-spacing:0.24em;color:#3D1A0E;margin-bottom:0.2rem;font-weight:700;text-transform:uppercase;">세움 오리지널</p>
+        <p style="font-size:0.65rem;letter-spacing:0.24em;color:#3D1A0E;margin-bottom:0.2rem;font-weight:700;text-transform:uppercase;">세콤 오리지널</p>
         <h1 class="title-serif" style="font-size:clamp(2rem,7vw,3.2rem);color:#2A0F06;line-height:1;margin-bottom:0.2rem;text-shadow:0 1px 4px rgba(255,255,255,0.3);">${teamName} 빙고</h1>
         <p style="font-size:0.92rem;color:#3D1A0E;font-weight:600;">함께하는 추억 만들기 ✨</p>
       </div>
