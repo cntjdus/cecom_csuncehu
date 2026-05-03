@@ -1,3 +1,6 @@
+/* ─── Google Fonts (Noto Sans KR 보조용) ───────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
 /* ─── 커스텀 폰트 (HSHwalkongSerif) ────────────────────────── */
 @font-face {
   font-family: 'HSHwalkongSerif';
@@ -6,9 +9,6 @@
   font-style: normal;
   font-display: swap;
 }
-
-/* ─── Google Fonts (Noto Sans KR 보조용) ───────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
 
 /* ─── 기본 리셋 ────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

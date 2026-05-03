@@ -1,6 +1,5 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
-import { serveStatic } from 'hono/cloudflare-workers'
 
 type Bindings = {
   DB: D1Database
@@ -10,9 +9,6 @@ type Bindings = {
 const app = new Hono<{ Bindings: Bindings }>()
 
 app.use('/api/*', cors())
-
-// ─── Static files ───────────────────────────────────────────
-app.use('/static/*', serveStatic({ root: './public' }))
 
 // ─── API: 빙고 보드 조회 ────────────────────────────────────
 app.get('/api/bingo/:teamId', async (c) => {
