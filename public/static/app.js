@@ -228,7 +228,7 @@ function renderNavbar() {
     </nav>
     <div style="position:absolute;bottom:2rem;left:0;right:0;text-align:center;">
       <div class="elegant-divider" style="margin-bottom:1rem;"></div>
-      <p style="font-size:0.75rem;color:rgba(93,60,40,0.5);">쎄선쎄후 동아리 🌸</p>
+      <p style="font-size:0.75rem;color:rgba(93,60,40,0.5);">Developed by Choogoo</p>
     </div>
   </div>`;
 }
