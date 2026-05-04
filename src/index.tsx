@@ -148,6 +148,13 @@ app.get('*', (c) => {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta property="og:title" content="쎄선쎄후 빙고" />
+  <meta property="og:description" content="짝선짝후 활동 빙고 사이트" />
+  <meta property="og:image" content="https://cesuncehu.cecom.dev/static/kakaocover4.png" />
+  <meta property="og:url" content="https://cesuncehu.cecom.dev" />
+
+
   <title>쎄선쎄후 빙고</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
