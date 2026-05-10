@@ -147,6 +147,7 @@ app.get('*', (c) => {
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/static/cecomfav.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <meta property="og:title" content="쎄선쎄후 빙고" />
